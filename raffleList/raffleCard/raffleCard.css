@@ -1,0 +1,21 @@
+.raffle-card.mdl-card {
+    width: 100%;
+    margin-bottom: 25px;
+}
+.raffle-card > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('/images/cardheader.jpg') center / cover;
+}
+.raffle-card > .mdl-card__menu {
+    color: #fff;
+}
+
+.mdl-card__title-text {
+    font-size: 2em;
+}
+
+.mdl-card__title-text {
+    padding: 5px 5px;
+    background: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,7 @@
+<template name="raffleList">
+    {{#each raffles}}
+        <a href="/raffle/{{_id._str}}">
+            {{> raffleCard}}
+        </a>
+    {{/each}}
+</template>
