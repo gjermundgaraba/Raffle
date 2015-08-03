@@ -1,0 +1,7 @@
+.mdl-button--floating-action {
+    bottom:24px;
+    padding-top:24px;
+    position:fixed;
+    right:24px;
+    z-index:998;
+}

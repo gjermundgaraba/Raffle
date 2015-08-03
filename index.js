@@ -16,6 +16,6 @@ Router.route('/', {
 });
 
 Router.route('/raffle/:_id', function () {
-    var raffle = Raffles.findOne(new Meteor.Collection.ObjectID(this.params._id));
+    var raffle = Raffles.findOne(this.params._id); //new Meteor.Collection.ObjectID
     this.render('raffle', { data: raffle });
 });

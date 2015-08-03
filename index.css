@@ -1,0 +1,10 @@
+.app-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .mdl-layout__header-row {
+        padding-left: 18px;
+    }
+}

@@ -1,7 +1,11 @@
 <template name="raffleList">
     {{#each raffles}}
-        <a href="/raffle/{{_id._str}}">
+        <a href="/raffle/{{_id}}">
             {{> raffleCard}}
         </a>
     {{/each}}
+
+    <button id="addRaffle" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action">
+        <i class="material-icons">add</i>
+    </button>
 </template>

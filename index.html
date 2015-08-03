@@ -8,13 +8,40 @@
 </body>
 
 <template name="AppLayout">
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-            <div style="margin: 0 auto; max-width: 640px">
-                <h1>Raffle App</h1>
-                {{> yield}}
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Raffle App</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <button id="statistics" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">trending_up</i>
+                    </button>
+                    <div class="mdl-tooltip" for="statistics">
+                        Statistics
+                    </div>
+
+                    <button id="rafflemasterlogin" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">supervisor_account</i>
+                    </button>
+                    <div class="mdl-tooltip" for="rafflemasterlogin">
+                        Raffle Master Login
+                    </div>
+                </div>
+
+        </header>
+        <main class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="app-container">
+                        {{> yield}}
+                    </div>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
 
 
