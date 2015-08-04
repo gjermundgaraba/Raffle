@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .app-container {
     max-width: 720px;
     margin: 0 auto;
@@ -7,4 +11,9 @@
     .mdl-layout__header-row {
         padding-left: 18px;
     }
+}
+
+.mdl-layout-title a {
+    color: #fff;
+    font-weight: 300;
 }
