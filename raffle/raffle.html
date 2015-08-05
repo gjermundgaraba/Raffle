@@ -1,39 +1,49 @@
 <template name="raffle">
 
-    <div>
-        {{#if anyWinners }}Winners are:{{/if}}
-        <ol>
-            {{#each winners}}
-                <li>{{name}}</li>
-            {{/each}}
-        </ol>
+    {{#if anyWinners }}
+        <div>
+            Winners are:
+            <ol>
+                {{#each winners}}
+                    <li>{{name}}</li>
+                {{/each}}
+            </ol>
+        </div>
+    {{/if}}
+
+    <div class="raffle-top">
+        {{#unless isDone }}
+            {{#unless isMaster}}
+                <form class="new-raffle-participant">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="name" name="name" required />
+                        <label class="mdl-textfield__label" for="name">Name</label>
+                    </div>
+                    <div class="select-area">
+                        <select name="numberOfTickets" required>
+                            <option value="" disabled selected>Select number of tickets</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Enter into Raffle!
+                        </button>
+                    </div>
+                </form>
+            {{/unless}}
+        {{/unless}}
+
+        {{#if isMaster}}
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--big-ass-button">
+                Pick a winner!
+            </button>
+        {{/if}}
     </div>
 
-    {{#unless isDone }}
-        {{#unless isMaster}}
-        <form class="new-raffle-participant">
-            <div class="mdl-textfield mdl-js-textfield">
-                <input required class="mdl-textfield__input" type="text" id="name" name="name" />
-                <label class="mdl-textfield__label" for="name">Name</label>
-                <span class="mdl-textfield__error">Name is required!</span>
-            </div>
-            <div class="select-area">
-                <select name="numberOfTickets" required>
-                    <option value="" disabled selected>Select number of tickets</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            <div class="button-area">
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    Enter into Raffle!
-                </button>
-            </div>
-        </form>
-        {{/unless}}
-    {{/unless}}
 
     <div class="mdl-typography--display-1">
         <h2 class="display-1">Participants in Raffle</h2>

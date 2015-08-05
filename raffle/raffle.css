@@ -1,8 +1,18 @@
 .select-area {
-    margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.button-area {
-    margin-bottom: 25px;
+.raffle-top {
+    margin-bottom: 100px;
+}
+
+.mdl-button--big-ass-button {
+    width: 100%;
+    height: 100px;
+}
+
+@media (max-width: 600px) {
+    .raffle-top {
+        margin-bottom: 25px;
+    }
 }

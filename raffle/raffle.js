@@ -13,7 +13,21 @@ if (Meteor.isClient) {
     });
 
     Template.raffle.events({
-        'click #deleteParticipant': function (event) {
+        'click .mdl-button--big-ass-button': function() {
+            var pool = [];
+
+            for (var i = 0; i < this.participants.length; ++i) {
+                var participant = this.participants[i];
+
+                for (var j = 0; j < participant.tickets; ++j) {
+                    pool.push(participant.name);
+                }
+            }
+
+            var winningNumber = getRandomInt(0, pool.length);
+            alert(pool[winningNumber]);
+        },
+        'click #deleteParticipant': function () {
             var parentData = Template.parentData();
 
 
@@ -58,5 +72,9 @@ if (Meteor.isClient) {
 
             event.target.reset();
         }
-    })
+    });
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
 }

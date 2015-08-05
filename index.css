@@ -7,13 +7,13 @@ a {
     margin: 0 auto;
 }
 
+.mdl-layout-title a {
+    color: #fff;
+    font-weight: 300;
+}
+
 @media (max-width: 600px) {
     .mdl-layout__header-row {
         padding-left: 18px;
     }
-}
-
-.mdl-layout-title a {
-    color: #fff;
-    font-weight: 300;
 }
