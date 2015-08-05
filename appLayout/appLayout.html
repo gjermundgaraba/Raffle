@@ -1,0 +1,16 @@
+<template name="appLayout">
+    {{> yield region="header"}}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+        <main class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="app-container">
+                        {{> yield}}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</template>

@@ -5,7 +5,9 @@
         </a>
     {{/each}}
 
-    <button id="addRaffle" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action">
-        <i class="material-icons">add</i>
-    </button>
+    {{#if isMaster}}
+        <button id="addRaffle" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action">
+            <i class="material-icons">add</i>
+        </button>
+    {{/if}}
 </template>

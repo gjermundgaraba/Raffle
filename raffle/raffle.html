@@ -9,34 +9,32 @@
         </ol>
     </div>
 
-    <div class="mdl-textfield mdl-js-textfield">
-        <input required class="mdl-textfield__input" type="text" id="name" />
-        <label class="mdl-textfield__label" for="name">Name</label>
-        <span class="mdl-textfield__error">Name is required!</span>
-    </div>
-    <div class="tickets-dropdown-hack">
-        <button id="tickets-dropdown"
-                class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">expand_more</i>
-        </button>
+    {{#unless isDone }}
+        {{#unless isMaster}}
+        <form class="new-raffle-participant">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required class="mdl-textfield__input" type="text" id="name" name="name" />
+                <label class="mdl-textfield__label" for="name">Name</label>
+                <span class="mdl-textfield__error">Name is required!</span>
+            </div>
+            <div class="select-area">
+                <select name="numberOfTickets" required>
+                    <option value="" disabled selected>Select number of tickets</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="button-area">
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Enter into Raffle!
+                </button>
+            </div>
+        </form>
+        {{/unless}}
+    {{/unless}}
 
-        {{numberOfTicketsSelected}} ticket(s)
-
-        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-            for="tickets-dropdown">
-            <li value="1" class="mdl-menu__item">1</li>
-            <li value="2" class="mdl-menu__item">2</li>
-            <li value="3" class="mdl-menu__item">3</li>
-            <li value="4" class="mdl-menu__item">4</li>
-        </ul>
-    </div>
-    <div class="button-area">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-            Enter into Raffle!
-        </button>
-    </div>
-
-    <hr>
     <div class="mdl-typography--display-1">
         <h2 class="display-1">Participants in Raffle</h2>
     </div>
@@ -46,6 +44,7 @@
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th>Tickets</th>
+            {{#if isMaster}}<th></th>{{/if}}
         </tr>
         </thead>
         <tbody>
@@ -53,6 +52,13 @@
             <tr>
                 <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
                 <td>{{tickets}}</td>
+                {{#if isMaster}}
+                    <td>
+                        <button id="deleteParticipant" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                {{/if}}
             </tr>
         {{/each}}
         </tbody>

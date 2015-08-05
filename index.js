@@ -1,7 +1,10 @@
 Raffles = new Meteor.Collection('raffles');
 
 Router.configure({
-    layoutTemplate: 'AppLayout'
+    layoutTemplate: 'appLayout',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    }
 });
 
 
@@ -15,7 +18,13 @@ Router.route('/', {
     }
 });
 
-Router.route('/raffle/:_id', function () {
-    var raffle = Raffles.findOne(this.params._id); //new Meteor.Collection.ObjectID
-    this.render('raffle', { data: raffle });
+Router.route('/raffle/:_id', {
+    name: 'raffle',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    },
+    data: function () {
+        return Raffles.findOne(this.params._id); //new Meteor.Collection.ObjectID
+        //this.render('raffle', {data: raffle});
+    }
 });
