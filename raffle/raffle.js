@@ -41,23 +41,27 @@ if (Meteor.isClient) {
             }
 
             // Draw winner
-            // TODO: SHOW EPIC GRAPHICZ AND DRUMROLL
             var winningNumber = getRandomInt(0, pool.length);
             var winnerName = pool[winningNumber];
             this.winners.push({ name: winnerName });
             removeWinnerFromParticipants(this.participants, winnerName);
 
             // Show winner
-            // TODO: SHOW EPIC GRAPHICZ
-            alert(pool[winningNumber]);
+            var audio = new Audio('/drumroll.mp3');
+            var that = this;
+            audio.addEventListener('ended', function() {
+                // Update data
+                Raffles.update({_id: that._id}, {
+                    $set: {
+                        winners: that.winners,
+                        participants: that.participants
+                    }
+                });
 
-            // Update data
-            Raffles.update({_id: this._id}, {
-                $set: {
-                    winners: this.winners,
-                    participants: this.participants
-                }
-            });
+                alert(pool[winningNumber]);
+            }, false);
+            audio.play();
+
 
             function removeWinnerFromParticipants(participants, winnerName) {
                 for (var k = 0; k < participants.length; ++k) {
@@ -137,6 +141,15 @@ if (Meteor.isClient) {
             }
 
             event.target.reset();
+        },
+        'click #deleteRaffle': function () {
+            var confirmDelete = confirm('Are you sure you want to delete this raffle?');
+
+            if (confirmDelete) {
+                Raffles.remove(this._id);
+                Router.go('/');
+            }
+
         }
     });
 

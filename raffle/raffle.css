@@ -18,12 +18,17 @@
     color: #fff;
 }
 
+.status-paragraph {
+    margin: 15px 0;
+}
+
+.md-button--spacious {
+    margin-top: 20px;
+}
+
 @media (max-width: 600px) {
     .raffle-top {
         margin-bottom: 25px;
     }
 }
 
-.status-paragraph {
-    margin: 15px 0;
-}
