@@ -9,6 +9,18 @@ if (Meteor.isClient) {
         },
         'isMaster': function() {
             return Session.get('RaffleMaster');
+        },
+        'numberOfParticipants': function () {
+            return this.participants.length;
+        },
+        'numberOfTickets': function () {
+            var numberOfTicktes = 0;
+
+            for (var i = 0; i < this.participants.length; ++i) {
+                numberOfTicktes += parseInt(this.participants[i].tickets);
+            }
+
+            return numberOfTicktes;
         }
     });
 
@@ -19,7 +31,7 @@ if (Meteor.isClient) {
             for (var i = 0; i < this.participants.length; ++i) {
                 var participant = this.participants[i];
 
-                for (var j = 0; j < participant.tickets; ++j) {
+                for (var j = 0; j < parseInt(participant.tickets); ++j) {
                     pool.push(participant.name);
                 }
             }
