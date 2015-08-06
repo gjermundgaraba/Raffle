@@ -1,16 +1,5 @@
 <template name="raffle">
 
-    {{#if anyWinners }}
-        <div>
-            Winners are:
-            <ol>
-                {{#each winners}}
-                    <li>{{name}}</li>
-                {{/each}}
-            </ol>
-        </div>
-    {{/if}}
-
     <div class="raffle-top">
         {{#unless isDone }}
             {{#unless isMaster}}
@@ -58,6 +47,19 @@
         </tr>
         </thead>
         <tbody>
+        {{#each winners}}
+            <tr class="winner-row">
+                <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
+                <td></td>
+                {{#if isMaster}}
+                    <td>
+                        <button id="deleteWinner" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                {{/if}}
+            </tr>
+        {{/each}}
         {{#each participants}}
             <tr>
                 <td class="mdl-data-table__cell--non-numeric">{{name}}</td>

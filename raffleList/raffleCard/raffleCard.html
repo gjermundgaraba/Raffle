@@ -1,12 +1,25 @@
 <template name="raffleCard">
     <div class="mdl-card mdl-shadow--2dp raffle-card">
         <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{header raffleDate}}</h2>
+            <h2 class="mdl-card__title-text">{{raffleDateFormatted}}</h2>
         </div>
         <div class="mdl-card__supporting-text">
-            Might be sweet with some kind of short description. Who won and such stuff.
-            <br>
-            The winner was {{winner}}...
+            <p>
+                Raffle for {{raffleDateFormatted}}.
+                {{#if anyWinners}}
+                    There were {{numberOfParticipants}} participants in total.
+                {{/if}}
+            </p>
+            {{#if anyWinners}}
+                <p class="winner-paragraph">
+                    The winners were:
+                    <ol class="winner-ol">
+                        {{#each winners}}
+                           <li>{{name}}</li>
+                        {{/each}}
+                    </ol>
+                </p>
+            {{/if}}
         </div>
     </div>
 </template>

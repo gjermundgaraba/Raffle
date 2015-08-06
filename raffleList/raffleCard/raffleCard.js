@@ -1,9 +1,14 @@
 if (Meteor.isClient) {
     Template.raffleCard.helpers({
 
-        header: function (raffleDate) {
-            return moment(raffleDate).format('Do MMMM');
+        raffleDateFormatted: function () {
+            return moment(this.raffleDate).format('Do MMMM');
+        },
+        numberOfParticipants: function () {
+            return this.participants.length + this.winners.length;
+        },
+        'anyWinners': function () {
+            return this.winners.length > 0;
         }
-
     });
 }
