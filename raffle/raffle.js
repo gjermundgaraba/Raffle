@@ -46,7 +46,8 @@ if (Meteor.isClient) {
             this.winners.push({ name: winnerName });
             removeWinnerFromParticipants(this.participants, winnerName);
 
-            // Show winner
+
+            // Play awesome drumroll to get people exicited
             var audio = new Audio('/drumroll.mp3');
             var that = this;
             audio.addEventListener('ended', function() {
@@ -58,6 +59,7 @@ if (Meteor.isClient) {
                     }
                 });
 
+                // Show winner
                 alert(pool[winningNumber]);
             }, false);
             audio.play();
@@ -153,6 +155,7 @@ if (Meteor.isClient) {
         }
     });
 
+    // Returns a random integer between min (included) and max (excluded)
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
