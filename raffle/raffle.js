@@ -60,7 +60,19 @@ if (Meteor.isClient) {
                 });
 
                 // Show winner
-                alert(pool[winningNumber]);
+                //alert(pool[winningNumber]);
+                var el = $('#winner-announcement-popup');
+                el.html('<h1>' + pool[winningNumber] + '</h1>');
+                if (el.length) {
+                    $.magnificPopup.open({
+                        items: {
+                            src: el
+                        },
+                        type: 'inline',
+                        closeOnContentClick: true
+                    });
+                }
+
             }, false);
             audio.play();
 
@@ -73,6 +85,11 @@ if (Meteor.isClient) {
                         return;
                     }
                 }
+            }
+
+            // Returns a random integer between min (included) and max (excluded)
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
             }
         },
         'click #deleteParticipant': function () {
@@ -154,9 +171,4 @@ if (Meteor.isClient) {
 
         }
     });
-
-    // Returns a random integer between min (included) and max (excluded)
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
 }
