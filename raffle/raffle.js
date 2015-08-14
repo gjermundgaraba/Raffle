@@ -40,8 +40,13 @@ if (Meteor.isClient) {
                 return;
             }
 
+            console.log('pool:');
+            console.log(pool);
+
             // Draw winner
             var winningNumber = getRandomInt(0, pool.length);
+            console.log('winningNumber:');
+            console.log(winningNumber);
             var winnerName = pool[winningNumber];
             this.winners.push({ name: winnerName });
             removeWinnerFromParticipants(this.participants, winnerName);
@@ -60,7 +65,6 @@ if (Meteor.isClient) {
                 });
 
                 // Show winner
-                //alert(pool[winningNumber]);
                 var el = $('#winner-announcement-popup');
                 el.html('<h1>' + pool[winningNumber] + '</h1>');
                 if (el.length) {

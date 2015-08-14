@@ -2,6 +2,14 @@ a {
     text-decoration: none;
 }
 
+body {
+    font-family: 'Lora', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Istok Web', sans-serif;
+}
+
 .app-container {
     max-width: 720px;
     margin: 0 auto;
