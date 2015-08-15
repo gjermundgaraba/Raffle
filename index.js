@@ -1,4 +1,5 @@
 Raffles = new Meteor.Collection('raffles');
+Users = new Meteor.Collection('users');
 
 Router.configure({
     layoutTemplate: 'appLayout',
@@ -24,6 +25,29 @@ Router.route('/raffle/:_id', {
         'header': {to: 'header'}
     },
     data: function () {
-        return Raffles.findOne(this.params._id); //new Meteor.Collection.ObjectID
+        return Raffles.findOne(this.params._id);
     }
 });
+
+Router.route('/user-manager/', {
+    name: 'userManager',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    },
+    data: function() {
+        var userList = Users.find({});
+        return {
+            users: userList
+        }
+    }
+});
+
+if (Meteor.isClient) {
+    Template.registerHelper('isMaster', function () {
+        return Session.get('RaffleMaster');
+    });
+
+    Template.registerHelper('getNameFromUserId', function (userId) {
+        return Users.findOne(userId).name;
+    });
+}

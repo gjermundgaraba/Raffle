@@ -12,7 +12,8 @@ Very important that participants only have unique names. Client needs to make su
         "raffleDate": dateOfTheRaffle,
          winners: [
              {
-                 name: 'Some Name'
+                 userId: somePersonsId,
+                 tickets: 1
              },
              {
                  ...
@@ -20,7 +21,7 @@ Very important that participants only have unique names. Client needs to make su
          ],
          participants: [
              {
-                 name: 'Some Name',
+                 userId: somePersonsId
                  tickets: 2
              },
              {

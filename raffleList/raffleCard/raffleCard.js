@@ -9,6 +9,9 @@ if (Meteor.isClient) {
         },
         'anyWinners': function () {
             return this.winners.length > 0;
+        },
+        'severalWinners': function () {
+            return this.winners.length > 1;
         }
     });
 }

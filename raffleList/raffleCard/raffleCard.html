@@ -12,10 +12,10 @@
             </p>
             {{#if anyWinners}}
                 <p class="winner-paragraph">
-                    The winners were:
+                    The winner{{#if severalWinners}}s{{/if}} were:
                     <ol class="winner-ol">
                         {{#each winners}}
-                           <li>{{name}}</li>
+                           <li>{{getNameFromUserId userId}}</li>
                         {{/each}}
                     </ol>
                 </p>

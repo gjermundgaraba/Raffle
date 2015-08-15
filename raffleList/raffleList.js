@@ -1,9 +1,4 @@
 if (Meteor.isClient) {
-    Template.raffleList.helpers({
-        'isMaster': function () {
-            return Session.get('RaffleMaster');
-        }
-    });
 
     Template.raffleList.events({
         'click #addRaffle': function () {
@@ -21,4 +16,5 @@ if (Meteor.isClient) {
             });
         }
     })
+
 }

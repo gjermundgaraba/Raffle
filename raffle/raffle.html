@@ -1,20 +1,23 @@
 <template name="raffle">
 
-    <div id="winner-announcement-popup">
-
-    </div>
+    <div id="winner-announcement-popup"></div>
 
     <div class="raffle-top">
         {{#unless isDone }}
             {{#unless isMaster}}
                 <form class="new-raffle-participant">
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" id="name" name="name" required />
-                        <label class="mdl-textfield__label" for="name">Name</label>
+                    <div class="select-area">
+                        <select name="participantId" required>
+                            <option value="" selected>Select Person</option>
+                            {{#each getPossibleUsers}}
+                                <option value="{{_id}}">{{name}}</option>
+                            {{/each}}
+
+                        </select>
                     </div>
                     <div class="select-area">
                         <select name="numberOfTickets" required>
-                            <option value="" disabled selected>Select number of tickets</option>
+                            <option value="" selected>Select number of tickets</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -57,8 +60,8 @@
         <tbody>
         {{#each winners}}
             <tr class="winner-row">
-                <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
-                <td></td>
+                <td class="mdl-data-table__cell--non-numeric">{{getNameFromUserId userId}}</td>
+                <td>{{tickets}}</td>
                 {{#if isMaster}}
                     <td>
                         <button id="deleteWinner" class="mdl-button mdl-js-button mdl-button--icon">
@@ -70,7 +73,7 @@
         {{/each}}
         {{#each participants}}
             <tr>
-                <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{getNameFromUserId userId}}</td>
                 <td>{{tickets}}</td>
                 {{#if isMaster}}
                     <td>

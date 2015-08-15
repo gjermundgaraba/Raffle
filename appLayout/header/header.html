@@ -6,12 +6,19 @@
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
+
+            {{#if isMaster}}
+                <button id="user-manager" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">people</i>
+                </button>
+            {{/if}}
+
             <button id="statistics" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">trending_up</i>
+                <i class="material-icons">equalizer</i>
             </button>
 
             <button id="rafflemasterlogin" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">supervisor_account</i>
+                <i class="material-icons">build</i>
             </button>
 
         </div>
