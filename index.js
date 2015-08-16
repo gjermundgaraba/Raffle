@@ -48,6 +48,11 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('getNameFromUserId', function (userId) {
-        return Users.findOne(userId).name;
+        if (typeof Users !== 'undefined' && Users != null) {
+            var user = Users.findOne(userId);
+            if (user) {
+                return user.name;
+            }
+        }
     });
 }
