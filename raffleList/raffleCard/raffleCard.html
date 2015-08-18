@@ -6,20 +6,27 @@
         <div class="mdl-card__supporting-text">
             <p>
                 Raffle for {{raffleDateFormatted}}.
-                {{#if anyWinners}}
+                {{#if isDone}}
                     There were {{numberOfParticipants}} participants in total.
                 {{/if}}
             </p>
-            {{#if anyWinners}}
-                <p class="winner-paragraph">
+            <p class="description-paragraph">
+                {{#if isDone}}
+                    {{#if anyWinners}}
+
                     The winner{{#if severalWinners}}s{{/if}} were:
                     <ol class="winner-ol">
                         {{#each winners}}
-                           <li>{{getNameFromUserId userId}}</li>
+                            <li>{{getNameFromUserId userId}}</li>
                         {{/each}}
                     </ol>
-                </p>
-            {{/if}}
+                    {{/if}}
+                {{/if}}
+
+                {{#unless isDone}}
+                    The raffle is currently still going on!
+                {{/unless}}
+            </p>
         </div>
     </div>
 </template>

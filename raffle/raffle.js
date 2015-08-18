@@ -1,22 +1,6 @@
 (function () {
     if (Meteor.isClient) {
 
-        function anyWinners() {
-            if (this.winners) {
-                return this.winners.length;
-            }
-        }
-
-        function raffleIsDone() {
-            return this.done;
-        }
-
-        function getNumberOfParticipants() {
-            if (this.participants) {
-                return this.participants.length;
-            }
-        }
-
         function getNumberOfTicketsInPlay() {
             if (this.participants) {
                 var numberOfTickets = 0;
@@ -190,10 +174,32 @@
             }
         }
 
+        function undoFinishRaffle() {
+            console.log('Undo Finish Raffle');
+
+            Raffles.update({ _id: this._id }, {
+                $set: {
+                    done: false
+                }
+            });
+        }
+
+        function finishRaffle() {
+            var confirmFinish = confirm('Are you sure you want to finish this raffle?');
+
+            if (confirmFinish) {
+                Raffles.update({ _id: this._id }, {
+                    $set: {
+                        done: true
+                    }
+                });
+            }
+        }
+
         Template.raffle.helpers({
-            'anyWinners': anyWinners,
-            'isDone': raffleIsDone,
-            'numberOfParticipants': getNumberOfParticipants,
+            'anyWinners': RAFFLE_COMMON.anyWinners,
+            'isDone': RAFFLE_COMMON.isDone,
+            'numberOfParticipants': RAFFLE_COMMON.getNumberOfActiveParticipants,
             'numberOfTickets': getNumberOfTicketsInPlay,
             'getPossibleUsers': getPossibleUsers
         });
@@ -203,7 +209,9 @@
             'click #deleteParticipant': deleteParticipant,
             'click #deleteWinner': deleteWinner,
             'submit .new-raffle-participant': submitNewParticipant,
-            'click #deleteRaffle': deleteRaffle
+            'click #deleteRaffle': deleteRaffle,
+            'click #finishRaffle': finishRaffle,
+            'click #undoFinishRaffle': undoFinishRaffle
         });
     }
 })();

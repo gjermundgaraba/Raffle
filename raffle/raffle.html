@@ -33,11 +33,14 @@
             {{/unless}}
         {{/unless}}
 
-        {{#if isMaster}}
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--big-ass-button">
-                Draw a winner!
-            </button>
-        {{/if}}
+        {{#unless isDone }}
+            {{#if isMaster}}
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--big-ass-button">
+                    Draw a winner!
+                </button>
+            {{/if}}
+        {{/unless}}
+
     </div>
 
 
@@ -88,9 +91,26 @@
     </table>
 
     {{#if isMaster}}
-        <button id="deleteRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
-            Delete Raffle
-        </button>
+        <div>
+            {{#if isDone}}
+                <button id="undoFinishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+                    Start Raffle Again
+                </button>
+            {{/if}}
+
+            {{#unless isDone }}
+                <button id="finishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+                    Finish Raffle
+                </button>
+            {{/unless}}
+        </div>
+
+        <div>
+            <button id="deleteRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+                Delete Raffle
+            </button>
+        </div>
+
     {{/if}}
 
 </template>

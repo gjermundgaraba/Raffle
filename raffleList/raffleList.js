@@ -2,14 +2,14 @@ if (Meteor.isClient) {
 
     Template.raffleList.events({
         'click #addRaffle': function () {
-            Raffles.insert({
+            var emptyRaffle = {
                 done: false,
                 raffleDate: new Date(),
-                winners: [
-                ],
-                participants: [
-                ]
-            }, function (error, id) {
+                winners: [],
+                participants: []
+            };
+
+            Raffles.insert(emptyRaffle, function (error, id) {
                 if (!error) {
                     Router.go('/raffle/' + id);
                 }
