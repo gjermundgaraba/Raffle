@@ -1,0 +1,28 @@
+
+<template name="addParticipant">
+    <form class="new-raffle-participant">
+        <div class="select-area">
+            <select name="participantId" required>
+                <option value="" selected>Select Person</option>
+                {{#each getPossibleUsers}}
+                    <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+
+            </select>
+        </div>
+        <div class="select-area">
+            <select name="numberOfTickets" required>
+                <option value="" selected>Select number of tickets</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                Enter into Raffle!
+            </button>
+        </div>
+    </form>
+</template>

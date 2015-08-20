@@ -12,7 +12,7 @@ Router.configure({
 Router.route('/', {
     name: 'raffleList',
     data: function() {
-        var raffleList = Raffles.find({});
+        var raffleList = Raffles.find({}, {sort: {raffleDate: -1}});
         return {
             raffles: raffleList
         }

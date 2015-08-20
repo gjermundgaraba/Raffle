@@ -5,42 +5,15 @@
     <div class="raffle-top">
         {{#unless isDone }}
             {{#unless isMaster}}
-                <form class="new-raffle-participant">
-                    <div class="select-area">
-                        <select name="participantId" required>
-                            <option value="" selected>Select Person</option>
-                            {{#each getPossibleUsers}}
-                                <option value="{{_id}}">{{name}}</option>
-                            {{/each}}
-
-                        </select>
-                    </div>
-                    <div class="select-area">
-                        <select name="numberOfTickets" required>
-                            <option value="" selected>Select number of tickets</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                            Enter into Raffle!
-                        </button>
-                    </div>
-                </form>
+                {{> addParticipant}}
             {{/unless}}
         {{/unless}}
 
         {{#unless isDone }}
             {{#if isMaster}}
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--big-ass-button">
-                    Draw a winner!
-                </button>
+                {{> drawWinner}}
             {{/if}}
         {{/unless}}
-
     </div>
 
 
@@ -52,7 +25,7 @@
         {{ numberOfParticipants }} participants in play. {{ numberOfTickets }} total tickets in the pool.
     </p>
 
-    <table style="width: 100%" class="mdl-data-table mdl-js-data-table">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--full-width">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
