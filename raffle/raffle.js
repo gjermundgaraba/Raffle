@@ -13,6 +13,18 @@
             }
         }
 
+        function getTotalNumberOfTickets() {
+            var numberOfTickets = 0;
+            numberOfTickets += getNumberOfTicketsInPlay.apply(this);
+
+            if (this.winners) {
+                for (var i = 0; i < this.winners.length; ++i) {
+                    numberOfTickets += parseInt(this.winners[i].tickets);
+                }
+            }
+
+            return numberOfTickets;
+        }
 
         function deleteParticipant() {
             var parentData = Template.parentData();
@@ -90,15 +102,17 @@
             'anyWinners': RAFFLE_COMMON.anyWinners,
             'isDone': RAFFLE_COMMON.isDone,
             'numberOfParticipants': RAFFLE_COMMON.getNumberOfActiveParticipants,
-            'numberOfTickets': getNumberOfTicketsInPlay
+            'getNumberOfTicketsInPlay': getNumberOfTicketsInPlay,
+            'getTotalNumberOfParticipants': RAFFLE_COMMON.getTotalNumberOfParticipants,
+            'getTotalNumberOfTickets': getTotalNumberOfTickets
         });
 
         Template.raffle.events({
             'click #deleteParticipant': deleteParticipant,
             'click #deleteWinner': deleteWinner,
             'click #deleteRaffle': deleteRaffle,
-            'click #finishRaffle': finishRaffle,
-            'click #undoFinishRaffle': undoFinishRaffle
+            'click #undoFinishRaffle': undoFinishRaffle,
+            'click #finishRaffle': finishRaffle
         });
     }
 })();

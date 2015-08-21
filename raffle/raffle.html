@@ -22,7 +22,13 @@
     </div>
 
     <p class="status-paragraph">
-        {{ numberOfParticipants }} participants in play. {{ numberOfTickets }} total tickets in the pool.
+        {{#unless isDone}}
+            {{ numberOfParticipants }} participants in play. {{ getNumberOfTicketsInPlay }} total tickets in the pool.
+        {{/unless}}
+        {{#if isDone}}
+            There were {{ getTotalNumberOfParticipants }} participants and {{ getTotalNumberOfTickets }} tickets.
+        {{/if}}
+
     </p>
 
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--full-width">
