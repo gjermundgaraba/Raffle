@@ -17,57 +17,25 @@
     </div>
 
 
-    <div class="mdl-typography--display-1">
-        <h2 class="display-1">Participants in Raffle</h2>
+    <div class="raffle-description">
+        <div class="mdl-typography--display-2">
+            <h1 class="display-2">Raffle for {{raffleDateFormatted}}</h1>
+        </div>
+
+        <p class="status-paragraph">
+            {{#unless isDone}}
+                {{ numberOfParticipants }} participants in play. {{ getNumberOfTicketsInPlay }} total tickets in the pool.
+            {{/unless}}
+            {{#if isDone}}
+                There were {{ getTotalNumberOfParticipants }} participants and {{ getTotalNumberOfTickets }} tickets.
+            {{/if}}
+
+        </p>
     </div>
 
-    <p class="status-paragraph">
-        {{#unless isDone}}
-            {{ numberOfParticipants }} participants in play. {{ getNumberOfTicketsInPlay }} total tickets in the pool.
-        {{/unless}}
-        {{#if isDone}}
-            There were {{ getTotalNumberOfParticipants }} participants and {{ getTotalNumberOfTickets }} tickets.
-        {{/if}}
+    {{> winnerTable}}
 
-    </p>
-
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--full-width">
-        <thead>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric">Name</th>
-            <th>Tickets</th>
-            {{#if isMaster}}<th></th>{{/if}}
-        </tr>
-        </thead>
-        <tbody>
-        {{#each winners}}
-            <tr class="winner-row">
-                <td class="mdl-data-table__cell--non-numeric">{{getNameFromUserId userId}}</td>
-                <td>{{tickets}}</td>
-                {{#if isMaster}}
-                    <td>
-                        <button id="deleteWinner" class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons">delete</i>
-                        </button>
-                    </td>
-                {{/if}}
-            </tr>
-        {{/each}}
-        {{#each participants}}
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric">{{getNameFromUserId userId}}</td>
-                <td>{{tickets}}</td>
-                {{#if isMaster}}
-                    <td>
-                        <button id="deleteParticipant" class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons">delete</i>
-                        </button>
-                    </td>
-                {{/if}}
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+    {{> participantsTable}}
 
     {{#if isMaster}}
         <div>

@@ -18,13 +18,7 @@
 }
 
 .raffle-top {
-    margin-bottom: 100px;
-}
-
-.winner-row {
-    background-color: rgb(63,81,181);
-    font-size: 1.5em;
-    color: #fff;
+    margin-bottom: 75px;
 }
 
 .status-paragraph {
@@ -35,8 +29,12 @@
     margin-top: 20px;
 }
 
-.mdl-data-table--full-width {
-    width: 100%;
+.raffle-group--spacious {
+    margin: 30px 0;
+}
+
+.raffle-description {
+    margin-bottom: 30px;
 }
 
 @media (max-width: 600px) {

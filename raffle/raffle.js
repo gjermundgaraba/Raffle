@@ -99,6 +99,7 @@
         }
 
         Template.raffle.helpers({
+            'raffleDateFormatted': RAFFLE_COMMON.raffleDateFormatted,
             'anyWinners': RAFFLE_COMMON.anyWinners,
             'isDone': RAFFLE_COMMON.isDone,
             'numberOfParticipants': RAFFLE_COMMON.getNumberOfActiveParticipants,

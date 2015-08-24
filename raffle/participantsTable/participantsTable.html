@@ -1,0 +1,32 @@
+<template name="participantsTable">
+    <div class="raffle-group--spacious">
+
+    </div>
+    <div class="mdl-typography--display-1">
+        <h2 class="display-1">Participants</h2>
+    </div>
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--full-width">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th>Tickets</th>
+            {{#if isMaster}}<th></th>{{/if}}
+        </tr>
+        </thead>
+        <tbody>
+        {{#each participants}}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{getNameFromUserId userId}}</td>
+                <td>{{tickets}}</td>
+                {{#if isMaster}}
+                    <td>
+                        <button id="deleteParticipant" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                {{/if}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>
