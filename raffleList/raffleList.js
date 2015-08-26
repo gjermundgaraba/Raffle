@@ -6,7 +6,8 @@ if (Meteor.isClient) {
                 done: false,
                 raffleDate: new Date(),
                 winners: [],
-                participants: []
+                participants: [],
+                losers: []
             };
 
             Raffles.insert(emptyRaffle, function (error, id) {

@@ -12,6 +12,7 @@
         {{#unless isDone }}
             {{#if isMaster}}
                 {{> drawWinner}}
+                {{> drawLoser}}
             {{/if}}
         {{/unless}}
     </div>
@@ -33,27 +34,33 @@
         </p>
     </div>
 
-    {{> winnerTable}}
+    {{#if anyWinners}}
+        {{> winnerTable}}
+    {{/if}}
+
+    {{#if anyLosers}}
+        {{> losersTable}}
+    {{/if}}
 
     {{> participantsTable}}
 
     {{#if isMaster}}
         <div>
             {{#if isDone}}
-                <button id="undoFinishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+                <button id="undoFinishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--middle">
                     Start Raffle Again
                 </button>
             {{/if}}
 
             {{#unless isDone }}
-                <button id="finishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+                <button id="finishRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--middle">
                     Finish Raffle
                 </button>
             {{/unless}}
         </div>
 
         <div>
-            <button id="deleteRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect md-button--spacious">
+            <button id="deleteRaffle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--middle">
                 Delete Raffle
             </button>
         </div>

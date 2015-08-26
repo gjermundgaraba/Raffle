@@ -21,12 +21,21 @@ Very important that participants only have unique names. Client needs to make su
          ],
          participants: [
              {
-                 userId: somePersonsId
+                 userId: somePersonsId,
                  tickets: 2
              },
              {
                  ...
              }
+         ],
+         losers: [
+            {
+                userId: somePersonsId,
+                tickets: 2
+            },
+            {
+                ...
+            }
          ]
     },
     {

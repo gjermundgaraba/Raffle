@@ -1,27 +1,27 @@
 (function () {
     if (Meteor.isClient) {
-        function drawWinner() {
-            var winner = DRAW_LOGIC.drawUser(this.participants);
-            if (!winner) {
+        function drawLoser() {
+            var loser = DRAW_LOGIC.drawUser(this.participants);
+            if (!loser) {
                 return;
             }
 
-            var winnerName = Users.findOne(winner.userId).name;
+            var loserName = Users.findOne(loser.userId).name;
 
             // Play awesome drum roll to get people excited
             var audio = new Audio('/drumroll.mp3');
             var that = this;
             audio.addEventListener('ended', function() {
-                that.winners.push(winner);
+                that.losers.push(loser);
                 Raffles.update({_id: that._id}, {
                     $set: {
-                        winners: that.winners,
+                        losers: that.losers,
                         participants: that.participants
                     }
                 });
 
                 var winnerAnnouncementPopupElement = $('#winner-announcement-popup');
-                winnerAnnouncementPopupElement.html('<h1>' + winnerName + '</h1>');
+                winnerAnnouncementPopupElement.html('<h1>' + loserName + '</h1>');
                 if (winnerAnnouncementPopupElement.length) {
                     $.magnificPopup.open({
                         items: {
@@ -36,8 +36,8 @@
             audio.play(); // Will update users and show winner after it is done
         }
 
-        Template.drawWinner.events({
-            'click #drawWinnerButton': drawWinner
+        Template.drawLoser.events({
+            'click #drawLoserButton': drawLoser
         });
     }
 })();

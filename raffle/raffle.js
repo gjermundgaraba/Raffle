@@ -2,26 +2,15 @@
     if (Meteor.isClient) {
 
         function getNumberOfTicketsInPlay() {
-            if (this.participants) {
-                var numberOfTickets = 0;
-
-                for (var i = 0; i < this.participants.length; ++i) {
-                    numberOfTickets += parseInt(this.participants[i].tickets);
-                }
-
-                return numberOfTickets;
-            }
+            return RAFFLE_COMMON.getNumberOfTickets(this.participants);
         }
 
         function getTotalNumberOfTickets() {
             var numberOfTickets = 0;
-            numberOfTickets += getNumberOfTicketsInPlay.apply(this);
 
-            if (this.winners) {
-                for (var i = 0; i < this.winners.length; ++i) {
-                    numberOfTickets += parseInt(this.winners[i].tickets);
-                }
-            }
+            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.participants);
+            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.winners);
+            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.losers);
 
             return numberOfTickets;
         }
@@ -43,26 +32,6 @@
             Raffles.update({_id: parentData._id}, {
                 $set: {
                     participants: participantsCopy
-                }
-            });
-        }
-
-        function deleteWinner() {
-            var parentData = Template.parentData();
-
-            var winnersCopy = parentData.winners.slice();
-            for (var i = 0; i < winnersCopy.length; ++i) {
-                var currentWinner = winnersCopy[i];
-
-                if (currentWinner.userId === this.userId) {
-                    winnersCopy.splice(i, 1);
-                    break; // Should only ever be one with that id, lets stop here
-                }
-            }
-
-            Raffles.update({_id: parentData._id}, {
-                $set: {
-                    winners: winnersCopy
                 }
             });
         }
@@ -101,6 +70,7 @@
         Template.raffle.helpers({
             'raffleDateFormatted': RAFFLE_COMMON.raffleDateFormatted,
             'anyWinners': RAFFLE_COMMON.anyWinners,
+            'anyLosers': RAFFLE_COMMON.anyLosers,
             'isDone': RAFFLE_COMMON.isDone,
             'numberOfParticipants': RAFFLE_COMMON.getNumberOfActiveParticipants,
             'getNumberOfTicketsInPlay': getNumberOfTicketsInPlay,
@@ -110,7 +80,6 @@
 
         Template.raffle.events({
             'click #deleteParticipant': deleteParticipant,
-            'click #deleteWinner': deleteWinner,
             'click #deleteRaffle': deleteRaffle,
             'click #undoFinishRaffle': undoFinishRaffle,
             'click #finishRaffle': finishRaffle

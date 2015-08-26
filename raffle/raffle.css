@@ -37,6 +37,13 @@
     margin-bottom: 30px;
 }
 
+.mdl-button--middle {
+    width: 100%;
+    height: 45px;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
 @media (max-width: 600px) {
     .raffle-top {
         margin-bottom: 25px;
