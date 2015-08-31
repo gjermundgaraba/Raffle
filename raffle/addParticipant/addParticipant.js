@@ -17,7 +17,7 @@
                     '_id': {
                         '$nin': impossibleUserIds
                     }
-                });
+                }, {sort: {name: 1}});
             }
         }
 

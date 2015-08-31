@@ -35,7 +35,7 @@ Router.route('/user-manager/', {
         'header': {to: 'header'}
     },
     data: function() {
-        var userList = Users.find({});
+        var userList = Users.find({}, {sort: {name: 1}});
         return {
             users: userList
         }
