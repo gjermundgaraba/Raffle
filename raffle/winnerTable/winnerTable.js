@@ -12,11 +12,7 @@
                 }
             }
 
-            Raffles.update({_id: parentData._id}, {
-                $set: {
-                    winners: parentData.winners
-                }
-            });
+            Meteor.call('updateWinners', parentData._id, parentData.winners);
         }
 
         Template.winnerTable.events({
@@ -24,3 +20,13 @@
         });
     }
 })();
+
+Meteor.methods({
+    updateWinners: function(raffleId, updatedWinners) {
+        Raffles.update(raffleId, {
+            $set: {
+                winners: updatedWinners
+            }
+        });
+    }
+});

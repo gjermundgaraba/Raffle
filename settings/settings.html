@@ -1,0 +1,20 @@
+<template name="settings">
+    <div class="mdl-typography--display-2">
+        <h1 class="display-2">Settings</h1>
+    </div>
+
+    <div class="settings-area">
+        <label for="test" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+            <input type="checkbox" id="test" class="mdl-switch__input" {{getTrueFalseSetting "test"}} />
+            <span class="mdl-switch__label">Test</span>
+        </label>
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" value="{{getSettingsValue "test2"}}" />
+            <label class="mdl-textfield__label" for="sample1">Test2</label>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised">
+            Save (TODO)
+        </button>
+    </div>
+
+</template>

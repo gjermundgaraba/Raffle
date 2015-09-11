@@ -16,6 +16,9 @@ if (Meteor.isClient) {
         },
         'click #user-manager': function () {
             Router.go('/user-manager');
+        },
+        'click #settings': function () {
+            Router.go('/settings');
         }
     })
 }

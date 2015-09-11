@@ -29,41 +29,28 @@
                 }
             }
 
-            Raffles.update({_id: parentData._id}, {
-                $set: {
-                    participants: participantsCopy
-                }
-            });
+            Meteor.call('updateParticipants', parentData._id, participantsCopy);
         }
 
         function deleteRaffle() {
             var confirmDelete = confirm('Are you sure you want to delete this raffle?');
 
             if (confirmDelete) {
-                Raffles.remove(this._id);
+                Meteor.call('deleteRaffle', this._id);
                 Router.go('/');
             }
         }
 
         function undoFinishRaffle() {
             console.log('Undo Finish Raffle');
-
-            Raffles.update({ _id: this._id }, {
-                $set: {
-                    done: false
-                }
-            });
+            Meteor.call('updateRaffleDoneStatus', this._id, false);
         }
 
         function finishRaffle() {
             var confirmFinish = confirm('Are you sure you want to finish this raffle?');
 
             if (confirmFinish) {
-                Raffles.update({ _id: this._id }, {
-                    $set: {
-                        done: true
-                    }
-                });
+                Meteor.call('updateRaffleDoneStatus', this._id, true);
             }
         }
 
@@ -86,3 +73,23 @@
         });
     }
 })();
+
+Meteor.methods({
+    deleteRaffle: function(raffleId) {
+        Raffles.remove(raffleId);
+    },
+    updateParticipants: function (raffleId, updatedParticipants) {
+        Raffles.update(raffleId, {
+            $set: {
+                participants: updatedParticipants
+            }
+        });
+    },
+    updateRaffleDoneStatus: function (raffleId, updatedDoneStatus) {
+        Raffles.update(raffleId, {
+            $set: {
+                done: updatedDoneStatus
+            }
+        });
+    }
+});

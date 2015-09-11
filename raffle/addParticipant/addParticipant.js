@@ -29,11 +29,7 @@
                 tickets: event.target.numberOfTickets.value
             };
 
-            Raffles.update({ _id: this._id }, {
-                $push: {
-                    participants: participant
-                }
-            });
+            Meteor.call('addParticipant', this._id, participant);
 
             event.target.reset();
         }
@@ -48,3 +44,13 @@
 
     }
 })();
+
+Meteor.methods({
+    addParticipant: function (raffleId, participant) {
+        Raffles.update(raffleId, {
+            $push: {
+                participants: participant
+            }
+        });
+    }
+});

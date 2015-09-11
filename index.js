@@ -1,5 +1,26 @@
 Raffles = new Meteor.Collection('raffles');
 Users = new Meteor.Collection('users');
+Settings = new Meteor.Collection('settings');
+
+if (Meteor.isServer) {
+    Meteor.publish('users', function () {
+        return Users.find();
+    });
+
+    Meteor.publish('raffles', function () {
+        return Raffles.find();
+    });
+
+    Meteor.publish('settings', function () {
+        return Settings.find();
+    })
+}
+
+if (Meteor.isClient) {
+    Meteor.subscribe('users');
+    Meteor.subscribe('raffles');
+    Meteor.subscribe('settings');
+}
 
 Router.configure({
     layoutTemplate: 'appLayout',
@@ -11,6 +32,9 @@ Router.configure({
 
 Router.route('/', {
     name: 'raffleList',
+    waitOn: function () {
+        return Meteor.subscribe('raffles');
+    },
     data: function() {
         var raffleList = Raffles.find({}, {sort: {raffleDate: -1}});
         return {
@@ -24,6 +48,9 @@ Router.route('/raffle/:_id', {
     yieldTemplates: {
         'header': {to: 'header'}
     },
+    waitOn: function () {
+        return Meteor.subscribe('raffles');
+    },
     data: function () {
         return Raffles.findOne(this.params._id);
     }
@@ -34,10 +61,29 @@ Router.route('/user-manager/', {
     yieldTemplates: {
         'header': {to: 'header'}
     },
+    waitOn: function () {
+        return Meteor.subscribe('users');
+    },
     data: function() {
         var userList = Users.find({}, {sort: {name: 1}});
         return {
             users: userList
+        }
+    }
+});
+
+Router.route('/settings/', {
+    name: 'settings',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    },
+    waitOn: function () {
+        return Meteor.subscribe('settings');
+    },
+    data: function() {
+        var allSettings = Settings.find({});
+        return {
+            settingsObj: allSettings.fetch()
         }
     }
 });

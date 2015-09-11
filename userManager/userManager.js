@@ -17,13 +17,19 @@ if (Meteor.isClient) {
             if (usernameAlreadyExists(this.users.fetch(), nameInputValue)) {
                 alert('Name already exists!');
             } else {
-                var newUser = {
-                    name: nameInputValue
-                };
-
-                Users.insert(newUser);
+                Meteor.call('addUser', nameInputValue);
                 event.target.reset();
             }
         }
     });
 }
+
+Meteor.methods({
+    addUser: function (userName) {
+        var newUser = {
+            name: userName
+        };
+
+        Users.insert(newUser);
+    }
+});

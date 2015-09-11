@@ -13,12 +13,7 @@
             var that = this;
             audio.addEventListener('ended', function() {
                 that.winners.push(winner);
-                Raffles.update({_id: that._id}, {
-                    $set: {
-                        winners: that.winners,
-                        participants: that.participants
-                    }
-                });
+                Meteor.call('updateWinnersAndParticipants', that._id, that.winners, that.participants);
 
                 var winnerAnnouncementPopupElement = $('#winner-announcement-popup');
                 winnerAnnouncementPopupElement.html('<h1>' + winnerName + '</h1>');
@@ -41,3 +36,14 @@
         });
     }
 })();
+
+Meteor.methods({
+    updateWinnersAndParticipants: function (raffleId, updatedWinners, updatedParticipants) {
+        Raffles.update(raffleId, {
+            $set: {
+                winners: updatedWinners,
+                participants: updatedParticipants
+            }
+        });
+    }
+});
