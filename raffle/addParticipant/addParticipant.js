@@ -11,7 +11,11 @@
                     return currentWinner.userId;
                 });
 
-                var impossibleUserIds = participantUserIdList.concat(winnerUserIdList);
+                var loserUserIdList = this.losers.map(function (currentLoser) {
+                    return currentLoser.userId;
+                });
+
+                var impossibleUserIds = participantUserIdList.concat(winnerUserIdList).concat(loserUserIdList);
 
                 return Users.find({
                     '_id': {
