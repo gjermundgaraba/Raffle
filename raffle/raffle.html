@@ -30,8 +30,12 @@
             {{#if isDone}}
                 There were {{ getTotalNumberOfParticipants }} participants and {{ getTotalNumberOfTickets }} tickets.
             {{/if}}
-
         </p>
+        {{#unless isDone }}
+            {{#if numberOfTicketsSettingActivated}}
+                {{> numberOfItemsAvailable}}
+            {{/if}}
+        {{/unless}}
     </div>
 
     {{#if anyWinners}}

@@ -1,21 +1,11 @@
 (function () {
     if (Meteor.isClient) {
 
-        function getNumberOfTicketsInPlay() {
+        function getNumberOfTicketsInPlay () {
             return RAFFLE_COMMON.getNumberOfTickets(this.participants);
         }
 
-        function getTotalNumberOfTickets() {
-            var numberOfTickets = 0;
-
-            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.participants);
-            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.winners);
-            numberOfTickets += RAFFLE_COMMON.getNumberOfTickets(this.losers);
-
-            return numberOfTickets;
-        }
-
-        function deleteParticipant() {
+        function deleteParticipant () {
             var parentData = Template.parentData();
 
 
@@ -32,7 +22,7 @@
             Meteor.call('updateParticipants', parentData._id, participantsCopy);
         }
 
-        function deleteRaffle() {
+        function deleteRaffle () {
             var confirmDelete = confirm('Are you sure you want to delete this raffle?');
 
             if (confirmDelete) {
@@ -41,12 +31,12 @@
             }
         }
 
-        function undoFinishRaffle() {
+        function undoFinishRaffle () {
             console.log('Undo Finish Raffle');
             Meteor.call('updateRaffleDoneStatus', this._id, false);
         }
 
-        function finishRaffle() {
+        function finishRaffle () {
             var confirmFinish = confirm('Are you sure you want to finish this raffle?');
 
             if (confirmFinish) {
@@ -62,7 +52,8 @@
             'numberOfParticipants': RAFFLE_COMMON.getNumberOfActiveParticipants,
             'getNumberOfTicketsInPlay': getNumberOfTicketsInPlay,
             'getTotalNumberOfParticipants': RAFFLE_COMMON.getTotalNumberOfParticipants,
-            'getTotalNumberOfTickets': getTotalNumberOfTickets
+            'getTotalNumberOfTickets': RAFFLE_COMMON.getTotalNumberOfTickets,
+            'numberOfTicketsSettingActivated': RAFFLE_COMMON.numberOfTicketsSettingActivated
         });
 
         Template.raffle.events({
@@ -75,7 +66,7 @@
 })();
 
 Meteor.methods({
-    deleteRaffle: function(raffleId) {
+    deleteRaffle: function (raffleId) {
         Raffles.remove(raffleId);
     },
     updateParticipants: function (raffleId, updatedParticipants) {

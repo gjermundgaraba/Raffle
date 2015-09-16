@@ -1,7 +1,7 @@
 (function () {
     if (Meteor.isClient) {
 
-        function getTrueFalseSetting(setting) {
+        function getCheckBoxTrueFalseSetting(setting) {
             return getSettingsValue.call(this, setting) ? "checked" : '';
         }
 
@@ -13,10 +13,23 @@
             }
         }
 
-        function changeSetting(event) {
+        function changeSettingSwitchValue(event) {
             var newValue = $(event.target).is(':checked');
             var settingsName = $(event.target).attr('id');
 
+            changeSetting.call(this, settingsName, newValue);
+        }
+
+        function changeSettingTextValue(event) {
+            var settingsName = $(event.target).attr('id');
+            var newValue = event.target.value;
+
+            if(event.target.validity.valid) {
+                changeSetting.call(this, settingsName, newValue);
+            }
+        }
+
+        function changeSetting(settingsName, newValue) {
             var settings = getSettingsWithName(this.settingsObj, settingsName);
             if (typeof settings !== 'undefined') {
                 Meteor.call('updateSetting', settings._id, newValue);
@@ -34,12 +47,13 @@
         }
 
         Template.settings.helpers({
-            'getTrueFalseSetting': getTrueFalseSetting,
+            'getCheckBoxTrueFalseSetting': getCheckBoxTrueFalseSetting,
             'getSettingsValue': getSettingsValue
         });
 
         Template.settings.events({
-            'click .mdl-switch__input': changeSetting
+            'click .mdl-switch__input': changeSettingSwitchValue,
+            'keyup .mdl-textfield__input': changeSettingTextValue
         });
 
     }

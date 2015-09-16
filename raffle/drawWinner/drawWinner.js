@@ -31,6 +31,28 @@
             audio.play(); // Will update users and show winner after it is done
         }
 
+        function drawButtonIsDisabled () {
+            if (RAFFLE_COMMON.numberOfTicketsSettingActivated()) {
+                var numberOfTicketsForOneItemSetting = Settings.findOne({
+                    settingsName: 'numberOfTicketsForOneItem'
+                });
+
+                var totalNumberOfTickets = RAFFLE_COMMON.getTotalNumberOfTickets.call(this);
+                var numberOfWinners = this.winners.length;
+                var numberOfTicketsForOneItem = numberOfTicketsForOneItemSetting.value;
+
+                var numberOfItems = (Math.floor(totalNumberOfTickets / numberOfTicketsForOneItem) - numberOfWinners);
+
+                return (numberOfItems <= 0);
+            } else {
+                return false;
+            }
+        }
+
+        Template.drawWinner.helpers({
+            'drawButtonIsDisabled': drawButtonIsDisabled
+        });
+
         Template.drawWinner.events({
             'click #drawWinnerButton': drawWinner
         });
