@@ -18,7 +18,7 @@ Meteor.methods({
        };
 
        Raffles.insert(emptyRaffle, function (error, id) {
-           if (!error) {
+           if (!error && Meteor.isClient) {
                Router.go('/raffle/' + id);
            }
        });
