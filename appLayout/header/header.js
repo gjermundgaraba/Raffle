@@ -2,6 +2,15 @@ if (Meteor.isClient) {
     Session.setDefault('RaffleMaster', false);
 
     Template.header.events({
+        'click #user-manager': function () {
+            Router.go('/user-manager');
+        },
+        'click #settings': function () {
+            Router.go('/settings');
+        },
+        'click #statistics': function () {
+            Router.go('/statistics');
+        },
         'click #rafflemasterlogin': function () {
 
             if (!Session.get('RaffleMaster')) {
@@ -13,12 +22,6 @@ if (Meteor.isClient) {
                 // We are Raffle Master, so lets remove it.
                 Session.set('RaffleMaster', false);
             }
-        },
-        'click #user-manager': function () {
-            Router.go('/user-manager');
-        },
-        'click #settings': function () {
-            Router.go('/settings');
         }
     })
 }

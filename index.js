@@ -88,6 +88,25 @@ Router.route('/settings/', {
     }
 });
 
+Router.route('/statistics/', {
+    name: 'statistics',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    },
+    waitOn: function () {
+        return Meteor.subscribe('raffles') && Meteor.subscribe('users');
+    },
+    data: function() {
+        var raffles = Raffles.find({}).fetch();
+        var users = Users.find({}).fetch();
+        return {
+            raffles: raffles,
+            users: users
+        }
+    }
+});
+
+
 if (Meteor.isClient) {
     Template.registerHelper('isMaster', function () {
         return Session.get('RaffleMaster');

@@ -43,3 +43,29 @@ Very important that participants only have unique names. Client needs to make su
     }
 ]
 ```
+
+## Meteor.Collection('users');
+```json
+[
+    {
+        _id: userId,
+        name: 'Gjermund Bjaaanes'
+    },
+    {
+        ...
+    }
+]
+```
+
+## Meteor.Collection('settings');
+```json
+[
+    {
+        settingsName: 'Name of Setting',
+        value: 'value of said setting, can be any type of object'
+    },
+    {
+        ...
+    }
+]
+```

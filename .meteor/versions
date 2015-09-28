@@ -5,6 +5,7 @@ blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
+chart:chart@1.0.1-beta.4
 check@1.0.5
 ddp@1.1.0
 deps@1.0.7
