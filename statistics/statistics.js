@@ -10,7 +10,13 @@
             var usersWithStats = [];
             populateUsersWithStats();
             usersWithStats.sort(function (a, b) {
-                return b.numberOfTimesWon - a.numberOfTimesWon;
+                var difference = b.numberOfTimesWon - a.numberOfTimesWon;
+
+                if (difference === 0) {
+                    difference = a.numberOfTimesParticipated - b.numberOfTimesParticipated;
+                }
+
+                return difference;
             });
 
             var labels= [];
