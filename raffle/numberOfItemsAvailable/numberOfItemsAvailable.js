@@ -6,11 +6,21 @@
                 settingsName: 'numberOfTicketsForOneItem'
             });
 
+            var maxItems = Settings.findOne({
+                settingsName: 'maxNumberOfItems'
+            });
+
             var totalNumberOfTickets = RAFFLE_COMMON.getTotalNumberOfTickets.call(this);
             var numberOfWinners = this.winners.length;
             var numberOfTicketsForOneItem = numberOfTicketsForOneItemSetting.value;
 
-            return (Math.floor(totalNumberOfTickets / numberOfTicketsForOneItem) - numberOfWinners);
+            var numberOfItemsLeftInRaffle = (Math.floor(totalNumberOfTickets / numberOfTicketsForOneItem) - numberOfWinners);
+
+            if (typeof maxItems !== 'undefined' && parseInt(maxItems.value) > 0 && numberOfItemsLeftInRaffle > parseInt(maxItems.value)) {
+                numberOfItemsLeftInRaffle = parseInt(maxItems.value);
+            }
+
+            return numberOfItemsLeftInRaffle;
         }
 
         function itemName() {

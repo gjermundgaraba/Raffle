@@ -13,7 +13,7 @@
                 <div>
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="numberOfTicketsForOneItem" value="{{getSettingsValue "numberOfTicketsForOneItem"}}" />
-                        <label class="mdl-textfield__label" for="numberOfTicketsForOneItem">Number of tickets needed for one itme</label>
+                        <label class="mdl-textfield__label" for="numberOfTicketsForOneItem">Number of tickets needed for one item</label>
                         <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </div>
@@ -28,6 +28,13 @@
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" id="itemNamePlural" value="{{getSettingsValue "itemNamePlural"}}" />
                         <label class="mdl-textfield__label" for="itemNamePlural">Item Name Plural</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxNumberOfItems" value="{{getSettingsValue "maxNumberOfItems"}}" />
+                        <label class="mdl-textfield__label" for="maxNumberOfItems">Maximum number of items (0 is unlimited)</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </div>
             </div>
