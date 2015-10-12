@@ -33,7 +33,14 @@
                 tickets: event.target.numberOfTickets.value
             };
 
-            Meteor.call('addParticipant', this._id, participant);
+            if (typeof participant.userId !== 'undefined' && participant.userId !== ''
+                && typeof participant.tickets !== 'undefined' && participant.tickets !== '') {
+                Meteor.call('addParticipant', this._id, participant);
+            } else {
+                alert('User dont exist!');
+            }
+
+
 
             event.target.reset();
         }
