@@ -56,6 +56,19 @@ Router.route('/raffle/:_id', {
     }
 });
 
+Router.route('/edit-user/:_id', {
+    name: 'editUser',
+    yieldTemplates: {
+        'header': {to: 'header'}
+    },
+    waitOn: function () {
+        return Meteor.subscribe('users');
+    },
+    data: function() {
+        return Users.findOne(this.params._id);
+    }
+});
+
 Router.route('/user-manager/', {
     name: 'userManager',
     yieldTemplates: {

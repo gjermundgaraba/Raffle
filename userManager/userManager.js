@@ -9,6 +9,9 @@ if (Meteor.isClient) {
     }
 
     Template.userManager.events({
+        'click .clickable-row': function (event) {
+            Router.go(event.currentTarget.dataset.href);
+        },
         'submit .add-user': function (event) {
             event.preventDefault();
 

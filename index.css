@@ -24,6 +24,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.header-space {
+    margin-top: 45px;
+}
+
 @media (max-width: 600px) {
     .mdl-layout__header-row {
         padding-left: 18px;
