@@ -1,12 +1,16 @@
 # Raffle App with Meteor.js
 
 Simple Web App made with Meteor.js to allow for small raffles.
+I wrote this app to learn Meteor.js
 
-Currently, the app is probably not following too many best practices.
-This app is used to learn meteor, and as such there will be a lot of questionable code.
+The app has the following functionality:
 
-
-NB! The app is still using the insecure package because it is currently only in private use.
-This should probably change at some time.
-
-More info to come...
+* Save users (persons to add to Raffles later)
+* Log in as Raffle Master (simple, without password)
+* Create new Raffle
+* Draw winner in Raffle
+* Draw loser in Raffle
+* Statistics
+* Configure type of item the Raffle is about (wine, beer, other)
+* Configure number of items in Raffle based on number of tickets (e.g. 10 tickets = 1 item, 20 tickets = 2 items, etc)
+* Configure max number of items in Raffle (e.g. max 1 item, 10 tickets = 1 item, 20 tickets = 1 item, etc)
