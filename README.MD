@@ -14,3 +14,22 @@ The app has the following functionality:
 * Configure type of item the Raffle is about (wine, beer, other)
 * Configure number of items in Raffle based on number of tickets (e.g. 10 tickets = 1 item, 20 tickets = 2 items, etc)
 * Configure max number of items in Raffle (e.g. max 1 item, 10 tickets = 1 item, 20 tickets = 1 item, etc)
+
+## Screenshots
+
+### Raffle List
+![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/RaffleList.png "Raffle List")
+
+### Raffle
+![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Raffle.png "Raffle List")
+
+### Statistics
+![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Statistics.png "Raffle List")
+
+### Users
+![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Users.png "Raffle List")
+
+### Settings
+![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Settings.png "Raffle List")
+
+
