@@ -21,15 +21,15 @@ The app has the following functionality:
 ![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/RaffleList.png "Raffle List")
 
 ### Raffle
-![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Raffle.png "Raffle List")
+![Raffle](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Raffle.png "Raffle")
 
 ### Statistics
-![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Statistics.png "Raffle List")
+![Statistics](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Statistics.png "Statistics")
 
 ### Users
-![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Users.png "Raffle List")
+![Users](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Users.png "Users")
 
 ### Settings
-![Raffle List](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Settings.png "Raffle List")
+![Settings](https://raw.githubusercontent.com/bjaanes/Raffle/master/screenshots/Settings.png "Settings")
 
 
