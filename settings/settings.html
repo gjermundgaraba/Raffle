@@ -32,14 +32,19 @@
                 </div>
                 <div>
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxNumberOfItems" value="{{getSettingsValue "maxNumberOfItems"}}" />
+                        <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="maxNumberOfItems" value="{{getSettingsValue "maxNumberOfItems"}}" />
                         <label class="mdl-textfield__label" for="maxNumberOfItems">Maximum number of items (0 is unlimited)</label>
                         <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </div>
             </div>
-
         {{/if}}
+
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="valuePerTicket" value="{{getSettingsValue "valuePerTicket"}}" />
+            <label class="mdl-textfield__label" for="valuePerTicket">Value per ticket</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
     </div>
 
 </template>
