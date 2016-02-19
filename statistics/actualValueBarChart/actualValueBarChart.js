@@ -12,7 +12,7 @@
 
             var usersWithStats = STATISTICS_COMMON.generateUsersStatistics(this.data.raffles);
             usersWithStats.sort(function (a, b) {
-                return (((b.numberOfTickets*valuePerTicket)/b.numberOfTimesWon) - ((a.numberOfTickets*valuePerTicket)/a.numberOfTimesWon));
+                return (((a.numberOfTickets*valuePerTicket)/a.numberOfTimesWon) - ((b.numberOfTickets*valuePerTicket)/b.numberOfTimesWon));
             });
 
             var labels= [];
